@@ -1,0 +1,10 @@
+body {
+  font-family: 'Merriweather', serif,Verdana, Tahoma, sans-serif,'Courier New', Courier, monospace;
+  /* font-size: 1.1rem; */
+  /* line-height: 1.8; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif,'Courier New', Courier, monospace;
+  /* font-weight: 700; */
+}

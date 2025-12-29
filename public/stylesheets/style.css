@@ -9,3 +9,22 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif,'Courier New', Courier, monospace;
   /* font-weight: 700; */
 }
+
+.pill-color{
+  background-color: lightgray;
+  color:black
+}
+
+.btn-primary-custom{
+  background-color: #3BB813;
+  color: white;
+  letter-spacing: -1px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.btn-elevated{
+  box-shadow: 4px 3px 4px 3px lightgray;
+}
+.btn-primary-custom:hover{
+  background-color: #3BB813;
+  transform: scale(1.06) translateY(-3px);
+}

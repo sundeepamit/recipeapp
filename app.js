@@ -1,15 +1,18 @@
 const express = require('express')
 const path = require('node:path')
+const ejsMate = require('ejs-mate')
+
 const router = require('./routes/recipe')
 
 const app = express()
 const port = 3000
 
 // set template engine 
+app.engine('ejs', ejsMate) //for boilerplate layout
 app.set('views', path.join(__dirname, '/views'))
 app.set('view engine', 'ejs')
 
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')))
 
 // routes
 app.use('/recipe', router)

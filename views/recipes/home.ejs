@@ -2,8 +2,6 @@
 <% layout('layouts/boilerplate') -%>
     <div class="container">
         <section>
-
-
             <div class="row gx-5 mb-3">
                 <div class="col">
                     <img class="img-fluid rounded main-img w-auto" src="/images/pizza.jpg" alt="">
@@ -36,22 +34,7 @@
                             <h5 class="h5">Floria Nelson</h5>
                             <span class="text-muted">author,chef</span>
                         </div>
-                        <div>
-                            <fieldset class="starability-basic">
-                                <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked
-                                    aria-label="No rating." />
-                                <input type="radio" id="first-rate1" name="rating" value="1" checked />
-                                <label for="first-rate1" title="Terrible">1 star</label>
-                                <input type="radio" id="first-rate2" name="rating" value="2" checked />
-                                <label for="first-rate2" title="Not good">2 stars</label>
-                                <input type="radio" id="first-rate3" name="rating" value="3" checked />
-                                <label for="first-rate3" title="Average">3 stars</label>
-                                <input type="radio" id="first-rate4" name="rating" value="4" checked />
-                                <label for="first-rate4" title="Very good">4 stars</label>
-                                <input type="radio" id="first-rate5" name="rating" value="5" />
-                                <label for="first-rate5" title="Amazing">5 stars</label>
-                            </fieldset>
-                        </div>
+                        <%- include('../partials/stars') %>
                     </div>
                     <div>
                         <button
@@ -63,25 +46,30 @@
             </div>
         </section>
         <section>
-            <div class="row explore-section mb-5 py-4 rounded gx-5">
+            <div class="row explore-section mb-5 py-4 px-4 rounded ">
                 <div class="row mb-4">
                     <h2 class="display-3 text-center">Explore How Our<br> Recipe Works </h2>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <img  class="img-fluid rounded w-75 elevated-img" src="/images/chef-recipe.jpg" alt="chef searching for Recipe" >
+                        <img class="img-fluid rounded w-75 elevated-img" src="/images/chef-recipe.jpg"
+                            alt="chef searching for Recipe">
                         <h3 class="display-4 ">01</h3>
                         <h3 class="text-dark display-6">Find Recipes</h3>
-                        <p class="lead text-muted fs-6">choose from a wide range of recipes for all preferences and diets</p>
+                        <p class="lead text-muted fs-6">choose from a wide range of recipes for all preferences and
+                            diets</p>
                     </div>
                     <div class="col">
                         <h3 class="display-4 ">02</h3>
                         <h3 class="text-dark display-6">Order ingredients online</h3>
-                        <p class="lead text-muted fs-6">Partner supermarket supply the ingredients for the chosen recipes at no extra cost</p>
-                        <img  class="img-fluid rounded w-75 elevated-img" src="/images/chef-prep.jpg" alt="chef searching for Recipe" >
+                        <p class="lead text-muted fs-6">Partner supermarket supply the ingredients for the chosen
+                            recipes at no extra cost</p>
+                        <img class="img-fluid rounded w-75 elevated-img" src="/images/chef-prep.jpg"
+                            alt="chef searching for Recipe">
                     </div>
                     <div class="col">
-                        <img  class="img-fluid rounded w-75 elevated-img" src="/images/chef-recipe.jpg" alt="chef searching for Recipe" >
+                        <img class="img-fluid rounded w-75  elevated-img" src="/images/chef2.jpg"
+                            alt="chef searching for Recipe">
                         <h3 class="display-4 ">03</h3>
                         <h3 class="text-dark display-6">Cooking and enjoying</h3>
                         <p class="lead text-muted fs-6">Recreate recipes with simple step-by-step instructions</p>
@@ -89,5 +77,64 @@
                 </div>
             </div>
         </section>
+        <section class="mb-5">
+            <div class="row p-4 ">
+                <div class="col">
+                    <h2 class="display-2">Online Cooking classes with Top chefs</h2>
+                    <p class="text-muted lead">Master the art of cooking with expert-led classes and elevate your
+                        culinary skills to new heights. </p>
+                    <button class="btn btn-primary-custom btn-elevated lead">Get Start now <svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-arrow-right " viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                        </svg></button>
+                </div>
+                <div class="col">
+                    <video class="w-100 rounded shadow-lg mt-5" autoplay loop>
+                        <source src="/videos/chef-cake.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5 reviews">
+            <div class="p-3 mb-5">
+                <div class="row">
+                    <h2 class="display-2">Valuations</h2>
+
+                </div>
+                <div class="row d-flex flex-nowrap overflow-auto ">
+                    <% for(let i=0;i<4;i++) {%>
+                        <div class="card  m-3 shadow" style="width: 18rem;">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <%- include('../partials/stars') %>
+                                </div>
+
+                                <div
+                                    class="card-subtitle d-flex justify-content-start align-items-center mb-2 text-muted">
+                                    <img class="img-fluid rounded-circle "
+                                        src="https://xsgames.co/randomusers/avatar.php?g=female" alt="profile-img"
+                                        width="40px">
+                                    <h6 class="ms-3">Emma K. · 2 days ago</h6>
+                                </div>
+                                <p class="card-text lead fs-6">This app literally saved my weeknight dinners! The
+                                    "What's in
+                                    my
+                                    fridge"
+                                    feature is scary accurate — I had half a
+                                    zucchini, some sad chicken, and random spices… boom, 3 actually good recipes popped
+                                    up.
+                                    Love
+                                    it</p>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+        </section>
 
     </div>
+    <%- include('../partials/footer') %>

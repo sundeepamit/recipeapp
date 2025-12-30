@@ -1,8 +1,17 @@
+/* *,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
 
 body {
   font-family: 'Lora', serif,Verdana, Tahoma, sans-serif,'Courier New', Courier, monospace;
   /* font-size: 1.1rem; */
   /* line-height: 1.8; */
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -44,4 +53,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .elevated-img{
    box-shadow: 2px 5px 4px 3px gray;
+}
+
+
+.reviews{
+  background-color: #eaf4f4;
+}
+
+footer{
+  background-color: #e5e6e4;
 }

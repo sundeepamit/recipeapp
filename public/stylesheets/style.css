@@ -28,3 +28,20 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #3BB813;
   transform: scale(1.06) translateY(-3px);
 }
+
+.explore-section{
+  background-color: #ececec;
+}
+ .explore-section h3{
+  color: #3BB813;
+ }
+.img-responsive {
+  width: 500px;          /* or 80%, 50vw, etc */
+  height: 300px;          /* this is what prevents squeezing */
+  /* display: block;        removes unwanted bottom gap in some cases */
+  object-fit: cover;
+}
+
+.elevated-img{
+   box-shadow: 2px 5px 4px 3px gray;
+}

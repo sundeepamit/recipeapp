@@ -3,4 +3,39 @@
     <div class="container">
         <h1 class="display-2">Show</h1>
 
+        <% for(let recipe of recipes) {%>
+            <div class="border mb-4">
+                <ul>
+                    <li>
+                        <h2>
+                            <%=recipe.title%>
+                        </h2>
+                    </li>
+                    <h3>Ingredents</h3>
+                    <% for(let ingredient of recipe.ingredients){ %>
+                        <li>
+                            <%= ingredient %>
+                        </li>
+                        <% } %>
+                            <h3>Description</h3>
+                            <li>
+                                <%= recipe.description %>
+                            </li>
+                            <li>
+                                <%= recipe.author %>
+                            </li>
+                            <li>
+                                <%= recipe.totalTime %>
+                            </li>
+                            <h3>Image</h3>
+                            <% for(let img of recipe.image){ %>
+                                <li>
+                                    <%= img %>
+                                </li>
+                                <% } %>
+                </ul>
+            </div>
+            <% } %>
+
+
     </div>

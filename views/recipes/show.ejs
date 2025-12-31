@@ -1,7 +1,50 @@
 <!-- displays all recipes -->
 <% layout('layouts/boilerplate') -%>
-    <div class="container">
-        <h1 class="display-2">Show</h1>
+
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active position-relative" data-bs-interval="3000">
+                <img src="/images/banners/recipe-banner.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption position-absolute top-50 start-50 translate-middle text-center ">
+                    <h2 class="display-1 fw-bolder text-white">
+                        Recipes
+                    </h2>
+                </div>
+            </div>
+            <div class="carousel-item position-relative" data-bs-interval="3000">
+                <img src="/images/banners/recipe-banner2.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption position-absolute top-50 start-50 translate-middle text-center ">
+                    <h2 class="display-1 fw-bolder text-white">
+                        Recipes
+                    </h2>
+                </div>
+            </div>
+            <div class="carousel-item position-relative" data-bs-interval="3000">
+                <img src="/images/banners/recipe-banner3.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption position-absolute top-50 start-50 translate-middle text-center ">
+                    <h2 class="display-1 fw-bolder text-white">
+                        Recipes
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+
+
+
+
+
+    <!-- 
 
         <% for(let recipe of recipes) {%>
             <div class="border mb-4">
@@ -36,6 +79,6 @@
                 </ul>
             </div>
             <% } %>
+    
 
-
-    </div>
+-->

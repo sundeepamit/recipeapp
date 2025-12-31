@@ -12,4 +12,10 @@ router.get('/show', async (req, res) => {
     // console.log(recipe)
     res.render('recipes/show', { recipes })
 })
+
+router.get('/detail/:id', async (req, res) => {
+    const { id } = req.params
+    const recipe = await Recipe.findById(id)
+    res.render('recipes/detail', { recipe })
+})
 module.exports = router

@@ -189,8 +189,50 @@ const dummyRecipes = [
         ],
         author: "Layla Hassan",
         totalTime: "30 mins",
-        image: ["https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGZvb2R8ZW58MHx8MHx8fDA%3D"]
-    }
+        image: ["https://images.unsplash.com/photo-1552611052-33e04de081de?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Zm9vZCUyMHBob3RvZ3JhcGh5fGVufDB8fDB8fHww"]
+    },
+    {
+        title: "Middle Eastern Shakshuka",
+        description: "Poached eggs in a smoky, spiced tomato and pepper sauce, finished with feta and fresh herbs.",
+        ingredients: [
+            "8 oz lo mein noodles or spaghetti",
+            "2 tbsp vegetable oil",
+            "1 red bell pepper, sliced",
+            "1 carrot, julienned",
+            "1 cup broccoli florets",
+            "1 cup snap peas",
+            "3 green onions, sliced",
+            "3 cloves garlic, minced",
+            "1/4 cup soy sauce",
+            "2 tbsp oyster sauce",
+            "1 tbsp sesame oil",
+            "1 tsp brown sugar"
+        ],
+        author: "Layla Hassan",
+        totalTime: "30 mins",
+        image: ["https://images.unsplash.com/photo-1554520735-0a6b8b6ce8b7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGZvb2QlMjBwaG90b2dyYXBoeXxlbnwwfHwwfHx8MA%3D%3D"]
+    },
+    {
+        title: "Middle Eastern Shakshuka",
+        description: "Poached eggs in a smoky, spiced tomato and pepper sauce, finished with feta and fresh herbs.",
+        ingredients: [
+            "8 oz lo mein noodles or spaghetti",
+            "2 tbsp vegetable oil",
+            "1 red bell pepper, sliced",
+            "1 carrot, julienned",
+            "1 cup broccoli florets",
+            "1 cup snap peas",
+            "3 green onions, sliced",
+            "3 cloves garlic, minced",
+            "1/4 cup soy sauce",
+            "2 tbsp oyster sauce",
+            "1 tbsp sesame oil",
+            "1 tsp brown sugar"
+        ],
+        author: "Layla Hassan",
+        totalTime: "30 mins",
+        image: ["https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Zm9vZCUyMHBob3RvZ3JhcGh5fGVufDB8fDB8fHww"]
+    },
 ];
 
 const seedRecipe = async () => {

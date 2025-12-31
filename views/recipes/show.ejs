@@ -60,7 +60,7 @@
         </div>
     </section>
 
-    <section class="py-5">
+    <section class="py-3">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
                 <% for(let recipe of recipes) { %>
@@ -74,9 +74,11 @@
 
                             <!-- Card Body -->
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">
-                                    <%= recipe.title %>
-                                </h5>
+                                <a class="text-decoration-none link-dark" href="/recipe/detail/<%= recipe._id %>">
+                                    <h5 class="card-title">
+                                        <%= recipe.title %>
+                                    </h5>
+                                </a>
                                 <p class="card-text text-muted flex-grow-1">
                                     <%= recipe.description.substring(0, 120) %>...
                                 </p>
@@ -96,60 +98,21 @@
             </div>
         </div>
     </section>
-    <!-- <section>
-        <div class=" container">
-            <div class="d-flex flex-wrap">
-                <% for(let recipe of recipes) {%>
-                    <div class="card" style="width: 18rem;">
-                        <% for(let img of recipe.image){ %>
-                            <img src="<%= img %>" class="card-img-top d-block h-25" alt="">
-                            <% } %>
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the
-                                        bulk of the card’s content.
-                                    </p>
-                                </div>
-                    </div>
-                    <% } %>
+    <section>
+        <div class="container d-flex justify-content-center mb-5">
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                <label class="btn btn-outlined" for="btnradio1">1</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                <label class="btn btn-outlined" for="btnradio2">2</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                <label class="btn btn-outlined" for="btnradio3">3</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+                <label class="btn btn-outlined" for="btnradio4">4</label>
             </div>
-
         </div>
-    </section> -->
-    <!-- <% for(let recipe of recipes) {%>
-        <div class="border mb-4">
-            <ul>
-                <li>
-                    <h2>
-                        <%=recipe.title%>
-                    </h2>
-                </li>
-                <h3>Ingredents</h3>
-                <% for(let ingredient of recipe.ingredients){ %>
-                    <li>
-                        <%= ingredient %>
-                    </li>
-                    <% } %>
-                        <h3>Description</h3>
-                        <li>
-                            <%= recipe.description %>
-                        </li>
-                        <li>
-                            <%= recipe.author %>
-                        </li>
-                        <li>
-                            <%= recipe.totalTime %>
-                        </li>
-                        <h3>Image</h3>
-                        <% for(let img of recipe.image){ %>
-                            <li>
-                                <%= img %>
-                            </li>
-                            <% } %>
-            </ul>
-        </div>
-        <% } %>
-
-
-            -->
+    </section>
+    <%- include('../partials/footer') %>

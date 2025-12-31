@@ -79,3 +79,4 @@ footer{
   object-fit: cover;       /* ★ This is the key property ★ */
   object-position: center; /* optional - centers the image */
 }
+

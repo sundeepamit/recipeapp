@@ -80,3 +80,6 @@ footer{
   object-position: center; /* optional - centers the image */
 }
 
+.ingredient{
+  background-color: #F3F4F4;
+}

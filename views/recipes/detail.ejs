@@ -1,3 +1,44 @@
 <!-- show detail about single recipe -->
 <% layout('layouts/boilerplate') -%>
-    <h1>Details</h1>
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col d-flex flex-column justify-content-center">
+                <h1 class="display-2 text-center">Let Cook <%= recipe.title %>
+                </h1>
+            </div>
+            <div class="col">
+                <div class="ratio" style="--bs-aspect-ratio: 100%;">
+                    <img src="<%= recipe.image[0] %>" class="rounded shadow-lg object-fit-cover" alt="recipe image">
+                </div>
+            </div>
+        </div>
+        <div class="mb-5">
+            <div class="ingredient card ps-4 rounded ">
+                <h2 class="display-3">Ingredients</h2>
+
+                <div class="row">
+                    <div class="col-md-6 p-2">
+                        <ol class="lead text-muted ">
+                            <% const mid=Math.ceil(recipe.ingredients.length / 2); for(let i=0; i < mid; i++) { %>
+                                <li>
+                                    <%= recipe.ingredients[i] %>
+                                </li>
+                                <% } %>
+                        </ol>
+                    </div>
+
+                    <div class="col-md-6 p-2">
+                        <ol class="lead text-muted " start="<%= mid + 1 %>">
+                            <% for(let i=mid; i < recipe.ingredients.length; i++) { %>
+                                <li>
+                                    <%= recipe.ingredients[i] %>
+                                </li>
+                                <% } %>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>

@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row mb-5">
             <div class="col d-flex flex-column justify-content-center">
-                <h1 class="display-2 text-center">Let Cook <%= recipe.title %>
+                <h1 class="display-1 text-center">Let Cook <%= recipe.title %>
                 </h1>
             </div>
             <div class="col">
@@ -12,33 +12,60 @@
                 </div>
             </div>
         </div>
-        <div class="mb-5">
-            <div class="ingredient card ps-4 rounded ">
-                <h2 class="display-3">Ingredients</h2>
+    </div>
+    <div class=" container mb-5">
+        <div class="ingredient card ps-4 rounded ">
+            <h2 class="display-2">Ingredients</h2>
 
-                <div class="row">
-                    <div class="col-md-6 p-2">
-                        <ol class="lead text-muted ">
-                            <% const mid=Math.ceil(recipe.ingredients.length / 2); for(let i=0; i < mid; i++) { %>
-                                <li>
-                                    <%= recipe.ingredients[i] %>
-                                </li>
-                                <% } %>
-                        </ol>
-                    </div>
+            <div class="row">
+                <div class="col-md-6 p-2">
+                    <ol class="lead text-muted ">
+                        <% const mid=Math.ceil(recipe.ingredients.length / 2); for(let i=0; i < mid; i++) { %>
+                            <li>
+                                <%= recipe.ingredients[i] %>
+                            </li>
+                            <% } %>
+                    </ol>
+                </div>
 
-                    <div class="col-md-6 p-2">
-                        <ol class="lead text-muted " start="<%= mid + 1 %>">
-                            <% for(let i=mid; i < recipe.ingredients.length; i++) { %>
-                                <li>
-                                    <%= recipe.ingredients[i] %>
-                                </li>
-                                <% } %>
-                        </ol>
-                    </div>
+                <div class="col-md-6 p-2">
+                    <ol class="lead text-muted " start="<%= mid + 1 %>">
+                        <% for(let i=mid; i < recipe.ingredients.length; i++) { %>
+                            <li>
+                                <%= recipe.ingredients[i] %>
+                            </li>
+                            <% } %>
+                    </ol>
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="container mb-5">
+        <h2 class="display-2 mb-3"> Cooking directions</h2>
+        <div class="row">
+            <div class="col-8">
+                <% for(let step=0;step<recipe.steps.length;step++) {%>
+                    <div class="row mb-3 rounded shadow p-2">
+                        <div class="col-1">
+                            <h2 class="display-4 " style="color: #69db7c;">
+                                <%= step+1 %>
+                            </h2>
+                        </div>
+                        <div class="col d-flex align-items-center">
+                            <p class="lead ">
+                                <%= recipe.steps[step] %>
+                            </p>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+            <div class="col-4">
+                <img class="img-fluid object-fit-cover rounded shadow" src="/images/cooking-instruction.jpg"
+                    alt="cooking-img">
+            </div>
+
+        </div>
 
     </div>
+    <%- include('../partials/footer') %>

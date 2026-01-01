@@ -25,6 +25,9 @@ const recipeSchema = new Schema({
     image: {
         type: [String],
 
+    },
+    steps: {
+        type: [String]
     }
 })
 

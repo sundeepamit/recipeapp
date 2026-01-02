@@ -1,0 +1,51 @@
+<!-- user enter there recipe -->
+<% layout('layouts/boilerplate') -%>
+    <div class="container">
+        <h1 class="display-2 text-center">Submit your recipe</h1>
+        <form action="/recipe/new" method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" aria-describedby="title" name="title"
+                    placeholder="enter recipe title">
+            </div>
+            <div class="mb-3">
+                <label for="author" class="form-label">Author name</label>
+                <input type="text" class="form-control" id="author" aria-describedby="author" name="author"
+                    placeholder="author name">
+            </div>
+            <div class="mb-3">
+                <label for="time" class="form-label">Total Time </label>
+                <input type="time" class="form-control" id="time" aria-describedby="time" name="totalTime"
+                    placeholder="Total Time">
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image Url </label>
+                <input type="text" class="form-control" id="image" aria-describedby="image" name="image"
+                    placeholder="Enter image url">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" aria-describedby="description" name="description"
+                    placeholder="description" rows="5"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="ingredients" class="form-label">Ingredients</label>
+                <textarea class="form-control" id="ingredients" aria-describedby="ingredients" name="ingredients"
+                    placeholder="one ingredient per line
+                                    e.g.
+                                    400 g chicken breast
+                                    2 tbsp olive oil
+                                    1 tsp paprika" rows="5"></textarea>
+
+            </div>
+
+            <div class="mb-3">
+                <label for="steps" class="form-label">Cooking Steps</label>
+                <textarea class="form-control" id="steps" aria-describedby="ingredients" name="steps" placeholder="one step per line
+                                e.g.
+                                Cut chicken into bite size pieces
+                                Heat oil in pan" rows="6"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>

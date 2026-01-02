@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Recipe = require('../models/recipe')
 const recipeSchemaValidation = require('../utils/recipe-validation')
-
+const ExpressError = require('../utils/ExpressError')
 router.get('/', (req, res) => {
     res.render('recipes/home')
 })
@@ -44,7 +44,7 @@ router.post('/new', async (req, res) => {
 
         res.redirect(`/recipe/detail/${recipe._id}`)
     } catch (error) {
-        console.log(error)
+        new ExpressError(error, 404)
     }
 
 })

@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Recipe = require('../models/recipe')
-
+const recipeSchemaValidation = require('../utils/recipe-validation')
 
 router.get('/', (req, res) => {
     res.render('recipes/home')
@@ -38,8 +38,14 @@ router.post('/new', async (req, res) => {
             .map(line => line.trim())
             .filter(line => line.length > 0);
     }
-    const recipe = await Recipe.insertOne({ title, author, totalTime, image, description, ingredients, steps })
+    try {
+        await recipeSchemaValidation.validate({ title, author, totalTime, image, description, ingredients, steps })
+        const recipe = await Recipe.insertOne({ title, author, totalTime, image, description, ingredients, steps })
 
-    res.redirect(`/recipe/detail/${recipe._id}`)
+        res.redirect(`/recipe/detail/${recipe._id}`)
+    } catch (error) {
+        console.log(error)
+    }
+
 })
 module.exports = router

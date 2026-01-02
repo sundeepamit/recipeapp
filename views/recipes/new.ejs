@@ -2,7 +2,7 @@
 <% layout('layouts/boilerplate') -%>
     <div class="container">
         <h1 class="display-2 text-center">Submit your recipe</h1>
-        <form action="/recipe/new" method="POST">
+        <form class="needs-validation" action="/recipe/new" method="POST" novalidate>
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" aria-describedby="title" name="title"
@@ -44,8 +44,9 @@
                 <textarea class="form-control" id="steps" aria-describedby="ingredients" name="steps" placeholder="one step per line
                                 e.g.
                                 Cut chicken into bite size pieces
-                                Heat oil in pan" rows="6"></textarea>
+                                Heat oil in pan" rows="6" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
+    <script src="/scripts/form-validation.js" defer></script>

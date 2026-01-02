@@ -48,4 +48,11 @@ router.post('/new', async (req, res) => {
     }
 
 })
+router.delete('/detail/:id', async (req, res) => {
+    const { id } = req.params
+    const recipeDeleted = await Recipe.findByIdAndDelete(id)
+    console.log(recipeDeleted)
+    res.redirect('/recipe/show')
+})
+
 module.exports = router

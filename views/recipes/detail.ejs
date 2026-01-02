@@ -68,4 +68,12 @@
         </div>
 
     </div>
+    <div class="container mb-5 d-flex justify-content-end">
+        <form action="/recipe/detail/<%=recipe._id %>?_method=DELETE" method="POST">
+            <button class="btn  btn-primary-custom rounded-pill shadow px-3 py-2 text-white fs-5"
+                style="background-color: #40c057;">Delete
+                this
+                recipe</button>
+        </form>
+    </div>
     <%- include('../partials/footer') %>

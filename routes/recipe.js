@@ -38,12 +38,6 @@ router.post('/new', async (req, res) => {
             .map(line => line.trim())
             .filter(line => line.length > 0);
     }
-    if (image) {
-        image = image
-            .split('\n')
-            .map(line => line.trim())
-            .filter(line => line.length > 0);
-    }
     const recipe = await Recipe.insertOne({ title, author, totalTime, image, description, ingredients, steps })
 
     res.redirect(`/recipe/detail/${recipe._id}`)

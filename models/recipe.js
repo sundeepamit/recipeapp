@@ -23,11 +23,12 @@ const recipeSchema = new Schema({
         required: true,
     },
     image: {
-        type: [String],
-
+        type: String,
+        required: true,
     },
     steps: {
-        type: [String]
+        type: [String],
+        required: true,
     }
 })
 

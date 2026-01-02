@@ -33,11 +33,13 @@ const recipeSchema = new Schema({
         required: true,
     },
     image: {
-        type: [String],
+        type: String,
+        required: true,
 
     },
     steps: {
-        type: [String]
+        type: [String],
+        required: true,
     }
 })
 
@@ -62,9 +64,9 @@ const dummyRecipes = [
         ],
         author: "Maria Rossi",
         totalTime: "35 mins",
-        image: [
+        image:
             "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D"
-        ],
+        ,
         steps: [
             "Preheat oven to 350°F (175°C). Grease 9-inch springform pan.",
             "Mix graham crumbs and melted butter. Press into pan bottom. Bake 10 minutes, cool.",
@@ -94,7 +96,7 @@ const dummyRecipes = [
         ],
         author: "Somchai Kittipong",
         totalTime: "40 mins",
-        image: ["https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGZvb2R8ZW58MHx8MHx8fDA%3D"],
+        image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGZvb2R8ZW58MHx8MHx8fDA%3D",
         steps: [
             "Preheat oven to 425°F (220°C). Line a sheet pan with parchment.",
             "Toss potatoes with 2 tbsp oil, salt, and pepper. Spread on pan and roast 15 minutes.",
@@ -121,10 +123,10 @@ const dummyRecipes = [
         ],
         author: "Giovanni Bianchi",
         totalTime: "1 hour 20 mins",
-        image: [
-            "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGZvb2R8ZW58MHx8MHx8fDA%3D",
-            "https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZvb2R8ZW58MHx8MHx8fDA%3D"
-        ],
+        image:
+            "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGZvb2R8ZW58MHx8MHx8fDA%3D"
+
+        ,
         steps: [
             "Press tofu to remove excess water, then pan-fry until golden. Set aside.",
             "In same pan, add 1/4 cup coconut milk and curry paste. Cook 2 minutes until fragrant.",
@@ -154,7 +156,7 @@ const dummyRecipes = [
         ],
         author: "Alex Chen",
         totalTime: "20 mins",
-        image: ["https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGZvb2R8ZW58MHx8MHx8fDA%3D"],
+        image: "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGZvb2R8ZW58MHx8MHx8fDA%3D",
         steps: [
             "In a bowl, whisk egg yolks, milk, and vanilla.",
             "Sift in flour and baking powder. Mix until smooth.",
@@ -186,9 +188,9 @@ const dummyRecipes = [
         ],
         author: "Yuki Tanaka",
         totalTime: "30 mins",
-        image: [
+        image:
             "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGZvb2R8ZW58MHx8MHx8fDA%3D"
-        ],
+        ,
         steps: [
             "Marinate chicken with 1/2 tsp each cumin, garam masala, turmeric, chili powder, salt, and 1 tbsp yogurt (if available) for 15 minutes.",
             "Heat butter in a large pan over medium heat. Add onion and cook until golden (8 minutes).",
@@ -219,7 +221,7 @@ const dummyRecipes = [
         ],
         author: "Carlos Rivera",
         totalTime: "25 mins",
-        image: ["https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGZvb2R8ZW58MHx8MHx8fDA%3D"],
+        image: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGZvb2R8ZW58MHx8MHx8fDA%3D",
         steps: [
             "Warm broth in a saucepan and keep at a simmer.",
             "In a large pan, heat olive oil and 2 tbsp butter over medium heat. Add onion and garlic, sauté until translucent (5 minutes).",
@@ -250,7 +252,7 @@ const dummyRecipes = [
         ],
         author: "Layla Hassan",
         totalTime: "30 mins",
-        image: ["https://images.unsplash.com/photo-1552611052-33e04de081de?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Zm9vZCUyMHBob3RvZ3JhcGh5fGVufDB8fDB8fHww"],
+        image: "https://images.unsplash.com/photo-1552611052-33e04de081de?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Zm9vZCUyMHBob3RvZ3JhcGh5fGVufDB8fDB8fHww",
         steps: [
             "Bring a large pot of heavily salted water to a boil.",
             "Cook spaghetti according to package instructions until al dente.",
@@ -281,7 +283,7 @@ const dummyRecipes = [
         ],
         author: "Layla Hassan",
         totalTime: "30 mins",
-        image: ["https://images.unsplash.com/photo-1554520735-0a6b8b6ce8b7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGZvb2QlMjBwaG90b2dyYXBoeXxlbnwwfHwwfHx8MA%3D%3D"],
+        image: "https://images.unsplash.com/photo-1554520735-0a6b8b6ce8b7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGZvb2QlMjBwaG90b2dyYXBoeXxlbnwwfHwwfHx8MA%3D%3D",
         steps: [
             "In a small bowl, mix soy sauce, oyster sauce, honey, and sesame oil. Set aside.",
             "Heat 1 tbsp oil in a large wok or skillet over high heat.",
@@ -311,7 +313,7 @@ const dummyRecipes = [
         ],
         author: "Layla Hassan",
         totalTime: "30 mins",
-        image: ["https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Zm9vZCUyMHBob3RvZ3JhcGh5fGVufDB8fDB8fHww"],
+        image: "https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Zm9vZCUyMHBob3RvZ3JhcGh5fGVufDB8fDB8fHww",
         steps: [
             "Line a 9x13 inch pan with parchment paper.",
             "Mix graham cracker crumbs, melted butter, peanut butter, and powdered sugar until well combined.",

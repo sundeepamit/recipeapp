@@ -55,4 +55,7 @@ router.delete('/detail/:id', async (req, res) => {
     res.redirect('/recipe/show')
 })
 
+router.get('/login', (req, res) => {
+    res.render('recipes/login')
+})
 module.exports = router

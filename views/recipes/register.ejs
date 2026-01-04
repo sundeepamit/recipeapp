@@ -1,0 +1,36 @@
+<% layout('layouts/boilerplate') -%>
+    <div class="container ">
+        <div class="row my-2 p-5 rounded-4 shadow">
+            <div class="col">
+                <img class="img-fluid  mb-3" src="/images/loginform.svg" alt="login image">
+                <img class="img-fluid" src="/images/loginpage.svg" alt="login image">
+
+            </div>
+
+            <div class="col d-flex flex-column justify-content-center align-item-center">
+                <h1 class="text-center display-2">Register</h1>
+                <div class="container">
+                    <form>
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label fs-3">Username</label>
+                            <input type="text" class="form-control form-control-lg" id="username"
+                                placeholder="enter your username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label fs-3">Email</label>
+                            <input type="email" class="form-control form-control-lg" id="email"
+                                placeholder="email@mail.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label fs-3">Password</label>
+                            <input type="password" class="form-control form-control-lg" id="password"
+                                placeholder="Password">
+                        </div>
+                        <button class="btn btn-primary-custom fs-3 rounded-pill shadow px-5">Register</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>

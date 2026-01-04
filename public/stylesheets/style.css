@@ -7,79 +7,96 @@
 } */
 
 body {
-  font-family: 'Lora', serif,Verdana, Tahoma, sans-serif,'Courier New', Courier, monospace;
+  font-family: 'Lora', serif, Verdana, Tahoma, sans-serif, 'Courier New', Courier, monospace;
   /* font-size: 1.1rem; */
   /* line-height: 1.8; */
   margin: 0;
   padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif,'Courier New', Courier, monospace;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Playfair Display', serif, 'Courier New', Courier, monospace;
   /* font-weight: 700; */
 }
 
-.pill-color{
+.pill-color {
   background-color: lightgray;
-  color:black
+  color: black
 }
 
-.btn-primary-custom{
+.btn-primary-custom {
   background-color: #3BB813;
   color: white;
   letter-spacing: -1px;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.btn-elevated{
+
+.btn-elevated {
   box-shadow: 4px 3px 4px 3px lightgray;
 }
-.btn-primary-custom:hover{
+
+.btn-primary-custom:hover {
   background-color: #3BB813;
+  color: white;
   transform: scale(1.06) translateY(-3px);
 }
 
-.explore-section{
+.explore-section {
   background-color: #ececec;
 }
- .explore-section h3{
+
+.explore-section h3 {
   color: #3BB813;
- }
+}
+
 .img-responsive {
-  width: 500px;          /* or 80%, 50vw, etc */
-  height: 300px;          /* this is what prevents squeezing */
+  width: 500px;
+  /* or 80%, 50vw, etc */
+  height: 300px;
+  /* this is what prevents squeezing */
   /* display: block;        removes unwanted bottom gap in some cases */
   object-fit: cover;
 }
 
-.elevated-img{
-   box-shadow: 2px 5px 4px 3px gray;
+.elevated-img {
+  box-shadow: 2px 5px 4px 3px gray;
 }
 
 
-.reviews{
+.reviews {
   background-color: #eaf4f4;
 }
 
-footer{
+footer {
   background-color: #e5e6e4;
 }
 
 .carousel-inner {
-  height: 600px;           /* your current fixed height */
-  overflow: hidden;        /* important - cuts off excess */
+  height: 600px;
+  /* your current fixed height */
+  overflow: hidden;
+  /* important - cuts off excess */
 }
 
 .carousel-item {
-  height: 100%;            /* full height of .carousel-inner */
+  height: 100%;
+  /* full height of .carousel-inner */
 }
 
 .carousel-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;       /* ★ This is the key property ★ */
-  object-position: center; /* optional - centers the image */
+  object-fit: cover;
+  /* ★ This is the key property ★ */
+  object-position: center;
+  /* optional - centers the image */
 }
 
-.ingredient{
+.ingredient {
   background-color: #F3F4F4;
 }

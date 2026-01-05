@@ -1,32 +1,32 @@
-<!-- user enter there recipe -->
+<!-- edit the recipe -->
 <% layout('layouts/boilerplate') -%>
     <div class="container">
-        <h1 class="display-2 text-center">Submit your recipe</h1>
-        <form class="needs-validation" action="/recipe/new" method="POST" novalidate>
+        <h1 class="display-2 text-center">Edit your recipe</h1>
+        <form class="needs-validation" action="/recipe/edit/<%=recipe._id%>?_method=PUT" method="POST" novalidate>
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" aria-describedby="title" name="title"
-                    placeholder="enter recipe title" required>
+                    placeholder="enter recipe title" value="<%= recipe.title %>" required>
             </div>
             <div class="mb-3">
                 <label for="author" class="form-label">Author name</label>
                 <input type="text" class="form-control" id="author" aria-describedby="author" name="author"
-                    placeholder="author name" required>
+                    placeholder="author name" value="<%= recipe.author %>" required>
             </div>
             <div class="mb-3">
                 <label for="time" class="form-label">Total Time </label>
                 <input type="text" class="form-control" id="time" aria-describedby="time" name="totalTime"
-                    placeholder="eg: 1hr 20 mins" required>
+                    placeholder="eg: 1hr 20 mins" value="<%= recipe.totalTime %>" required>
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Image Url </label>
                 <input type="text" class="form-control" id="image" aria-describedby="image" name="image"
-                    placeholder="Enter image url" required>
+                    placeholder="Enter image url" value="<%= recipe.image %>" required>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea class="form-control" id="description" aria-describedby="description" name="description"
-                    placeholder="description" rows="5" required></textarea>
+                    rows="5" required><%= recipe.description %></textarea>
             </div>
             <div class="mb-3">
                 <label for="ingredients" class="form-label">Ingredients</label>
@@ -35,7 +35,7 @@
                                     e.g.
                                     400 g chicken breast
                                     2 tbsp olive oil
-                                    1 tsp paprika" rows="5" required></textarea>
+                                    1 tsp paprika" rows="5" required><%= recipe.ingredients %></textarea>
 
             </div>
 
@@ -44,7 +44,7 @@
                 <textarea class="form-control" id="steps" aria-describedby="cooking steps" name="steps" placeholder="one step per line
                                 e.g.
                                 Cut chicken into bite size pieces
-                                Heat oil in pan" rows="6" required></textarea>
+                                Heat oil in pan" rows="6" required><%= recipe.steps %></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

@@ -31,6 +31,12 @@ router.get('/new', (req, res) => {
     res.render('recipes/new')
 })
 
+router.get('/edit/:id', async (req, res) => {
+    const { id } = req.params
+    const recipe = await Recipe.findById(id)
+    res.render('recipes/edit', { recipe })
+})
+
 router.post('/new', async (req, res) => {
     let { title, author, totalTime, image, description, ingredients, steps } = req.body
     if (ingredients) {
@@ -56,10 +62,27 @@ router.post('/new', async (req, res) => {
     }
 
 })
+
+router.put('/edit/:id', async (req, res) => {
+    // Bug :Not a best filter
+    const { id } = req.params
+    let { title, author, totalTime, image, description, ingredients, steps } = req.body
+    if (ingredients) {
+        ingredients = ingredients.split(',').map(line => line.trim()).filter(line => line.length > 0)
+    }
+    if (steps) {
+        steps = steps.split('.,').map(line => line.trim()).filter(line => line.length > 0);
+    }
+    const updatedRecipe = await Recipe.findByIdAndUpdate(id, { title, author, totalTime, image, description, ingredients, steps })
+    console.log(updatedRecipe)
+    res.redirect(`/recipe/detail/${id}`)
+})
+
 router.delete('/detail/:id', async (req, res) => {
     const { id } = req.params
     const recipeDeleted = await Recipe.findByIdAndDelete(id)
     console.log(recipeDeleted)
+    req.flash('success', 'Successfully deleted recipe')
     res.redirect('/recipe/show')
 })
 

@@ -4,6 +4,7 @@ const ejsMate = require('ejs-mate')
 const mongoose = require('mongoose')
 const router = require('./routes/recipe')
 const methodOverride = require('method-override')
+const session = require('express-session')
 
 // mongoose setup
 async function main() {
@@ -26,6 +27,20 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 app.use(methodOverride('_method'))
+app.use(session({
+    secret: 'verysecure',
+    resave: true,                   // Don't save session if unmodified
+    saveUninitialized: true,        // Don't create session until something is stored
+    cookie: {                        // Optional: Configure the session cookie
+        secure: false,
+        path: '/recipe',                // Set to true if using HTTPS
+        httpOnly: true,                // Prevents client-side JS from accessing the cookie
+        maxAge: 1000 * 60 * 60 * 24,    // Session expires in 1 day (in milliseconds)
+        priority: 'high'
+    }
+}))
+
+
 // routes
 app.use('/recipe', router)
 

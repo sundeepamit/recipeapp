@@ -4,6 +4,10 @@ const Recipe = require('../models/recipe')
 const recipeSchemaValidation = require('../utils/recipe-validation')
 const ExpressError = require('../utils/ExpressError')
 router.get('/', (req, res) => {
+    // console.log(req.session)
+    // console.log(req.sessionID)
+    // req.session.isLogin = true
+    // console.log(req.session)
     res.render('recipes/home')
 })
 

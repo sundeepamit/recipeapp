@@ -20,6 +20,10 @@ router.get('/show', async (req, res) => {
 router.get('/detail/:id', async (req, res) => {
     const { id } = req.params
     const recipe = await Recipe.findById(id)
+    if (!recipe) {
+        req.flash('error', 'Cannot find that recipe')
+        return res.redirect('/recipe/show')
+    }
     res.render('recipes/detail', { recipe })
 })
 
@@ -45,7 +49,7 @@ router.post('/new', async (req, res) => {
     try {
         await recipeSchemaValidation.validate({ title, author, totalTime, image, description, ingredients, steps })
         const recipe = await Recipe.insertOne({ title, author, totalTime, image, description, ingredients, steps })
-
+        req.flash('success', 'successfully created recipe')
         res.redirect(`/recipe/detail/${recipe._id}`)
     } catch (error) {
         new ExpressError(error, 404)

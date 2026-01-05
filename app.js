@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const router = require('./routes/recipe')
 const methodOverride = require('method-override')
 const session = require('express-session')
+const flash = require('connect-flash')
 
 // mongoose setup
 async function main() {
@@ -39,7 +40,13 @@ app.use(session({
         priority: 'high'
     }
 }))
+app.use(flash())
 
+app.use((req, res, next) => {
+    res.locals.success = req.flash('success')
+    res.locals.error = req.flash('error')
+    next()
+})
 
 // routes
 app.use('/recipe', router)

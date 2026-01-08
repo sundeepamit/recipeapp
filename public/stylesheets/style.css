@@ -104,3 +104,10 @@ footer {
 .user-icon{
   color: #3BB813;
 }
+
+.not-found{
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.not-found button:hover{
+    transform: scale(1.06) translateY(-3px);
+}

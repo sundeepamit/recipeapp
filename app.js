@@ -6,7 +6,10 @@ const router = require('./routes/recipe')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const flash = require('connect-flash')
+const User = require('./models/user')
 
+const passport = require('passport')
+const LocalStrategy = require('passport-local')
 // mongoose setup
 async function main() {
     await mongoose.connect('mongodb://127.0.0.1:27017/recipeApp')
@@ -41,6 +44,15 @@ app.use(session({
     }
 }))
 app.use(flash())
+
+// used for register and login user
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()))
+
+// use static serialize and deserialize of model for passport session support
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
 
 app.use((req, res, next) => {
     res.locals.success = req.flash('success')

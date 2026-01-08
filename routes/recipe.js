@@ -36,6 +36,11 @@ router.get('/new', isLoggedIn, (req, res) => {
 
 router.get('/edit/:id', isLoggedIn, async (req, res) => {
     const { id } = req.params
+    const foundRecipe = await Recipe.findById(id)
+    if (!foundRecipe.owner._id.equals(req.user._id)) {
+        req.flash('error', 'You do not have permission to edit this.')
+        return res.redirect('/recipe/show')
+    }
     const recipe = await Recipe.findById(id)
     res.render('recipes/edit', { recipe })
 })
@@ -78,6 +83,11 @@ router.put('/edit/:id', isLoggedIn, async (req, res) => {
     if (steps) {
         steps = steps.split('.,').map(line => line.trim()).filter(line => line.length > 0);
     }
+    const foundRecipe = await Recipe.findById(id)
+    if (!foundRecipe.owner._id.equals(req.user._id)) {
+        req.flash('error', 'You do not have permission to edit this.')
+        return res.redirect('/recipe/show')
+    }
     const updatedRecipe = await Recipe.findByIdAndUpdate(id, { title, author, totalTime, image, description, ingredients, steps })
     req.flash('success', 'Update successfully')
     res.redirect(`/recipe/detail/${id}`)
@@ -85,6 +95,11 @@ router.put('/edit/:id', isLoggedIn, async (req, res) => {
 
 router.delete('/detail/:id', isLoggedIn, async (req, res) => {
     const { id } = req.params
+    const foundRecipe = await Recipe.findById(id)
+    if (!foundRecipe.owner._id.equals(req.user._id)) {
+        req.flash('error', 'You do not have permission to edit this.')
+        return res.redirect('/recipe/show')
+    }
     const recipeDeleted = await Recipe.findByIdAndDelete(id)
     console.log(recipeDeleted)
     req.flash('success', 'Successfully deleted recipe')

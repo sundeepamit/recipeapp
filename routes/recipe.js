@@ -74,7 +74,7 @@ router.put('/edit/:id', async (req, res) => {
         steps = steps.split('.,').map(line => line.trim()).filter(line => line.length > 0);
     }
     const updatedRecipe = await Recipe.findByIdAndUpdate(id, { title, author, totalTime, image, description, ingredients, steps })
-    console.log(updatedRecipe)
+    req.flash('success', 'Update successfully')
     res.redirect(`/recipe/detail/${id}`)
 })
 

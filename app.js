@@ -34,7 +34,7 @@ app.use(session({
     saveUninitialized: true,        // Don't create session until something is stored
     cookie: {                        // Optional: Configure the session cookie
         secure: false,
-        path: '/recipe',                // Set to true if using HTTPS
+        path: '/',                // Set to true if using HTTPS
         httpOnly: true,                // Prevents client-side JS from accessing the cookie
         maxAge: 1000 * 60 * 60 * 24,    // Session expires in 1 day (in milliseconds)
         priority: 'high'

@@ -21,7 +21,8 @@ router.get('/show', async (req, res) => {
 
 router.get('/detail/:id', async (req, res) => {
     const { id } = req.params
-    const recipe = await Recipe.findById(id)
+    const recipe = await Recipe.findById(id).populate('owner')
+    // console.log(recipe)
     if (!recipe) {
         req.flash('error', 'Cannot find that recipe')
         return res.redirect('/recipe/show')
@@ -56,7 +57,9 @@ router.post('/new', isLoggedIn, async (req, res) => {
     }
     try {
         await recipeSchemaValidation.validate({ title, author, totalTime, image, description, ingredients, steps })
-        const recipe = await Recipe.insertOne({ title, author, totalTime, image, description, ingredients, steps })
+        const recipe = new Recipe({ title, author, totalTime, image, description, ingredients, steps })
+        recipe.owner = req.user._id
+        await recipe.save()
         req.flash('success', 'successfully created recipe')
         res.redirect(`/recipe/detail/${recipe._id}`)
     } catch (error) {

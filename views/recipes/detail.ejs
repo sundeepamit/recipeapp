@@ -5,6 +5,10 @@
             <div class="col d-flex flex-column justify-content-center">
                 <h1 class="display-1 text-center">Let Make <%= recipe.title %>
                 </h1>
+
+                <h5 class="text-center text-muted">
+                    by - <%=recipe.owner.username %>
+                </h5>
             </div>
             <div class="col">
                 <div class="ratio" style="--bs-aspect-ratio: 100%;">
@@ -68,7 +72,7 @@
         </div>
 
     </div>
-    <% if(loggedInUser){ %>
+    <% if(loggedInUser &&loggedInUser.username===recipe.owner.username){ %>
         <div class="container mb-5 d-flex justify-content-end">
             <button class="btn  btn-primary-custom rounded-pill shadow px-3 py-2 me-4 text-white fs-5"
                 style="background-color: #40c057;"><a href="/recipe/edit/<%=recipe._id  %>"

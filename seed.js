@@ -40,6 +40,10 @@ const recipeSchema = new Schema({
     steps: {
         type: [String],
         required: true,
+    },
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
 })
 
@@ -75,7 +79,8 @@ const dummyRecipes = [
             "Bake in water bath 60-70 minutes until center jiggles slightly.",
             "Cool 15 minutes, then run knife around edge. Chill 4+ hours.",
             "Mix topping ingredients, spread on chilled cheesecake. Chill 1 more hour before slicing."
-        ]
+        ],
+        owner: "695f44a2d47c7e796b8a4123"
     },
     {
         title: "Thai Green Curry with Chicken",
@@ -105,7 +110,8 @@ const dummyRecipes = [
             "Brush salmon and veggies with lemon-garlic mixture.",
             "Roast 12-15 minutes until salmon flakes easily.",
             "Serve with lemon wedges and extra dill."
-        ]
+        ],
+        owner: "695f44a2d47c7e796b8a4123"
     },
     {
         title: "Classic Homemade Beef Lasagna",
@@ -135,7 +141,8 @@ const dummyRecipes = [
             "Add snap peas, tofu, and soy sauce. Simmer 3 more minutes.",
             "Turn off heat, stir in lime juice.",
             "Serve over jasmine rice, garnished with basil and sliced chili."
-        ]
+        ],
+        owner: "695f44a2d47c7e796b8a4123"
     },
     {
         title: "Quick & Easy Vegetable Stir-Fry",
@@ -166,7 +173,8 @@ const dummyRecipes = [
             "Add 1-2 tbsp water around pancakes, cover, and cook 4 minutes.",
             "Flip carefully, add more water, cover, and cook another 4 minutes until golden.",
             "Serve immediately with powdered sugar, syrup, and berries."
-        ]
+        ],
+        owner: "695f44a2d47c7e796b8a4123"
 
     },
     {
@@ -200,7 +208,8 @@ const dummyRecipes = [
             "Pour in 1/2 cup water, cover, and simmer 10-12 minutes until chicken is cooked.",
             "Stir in heavy cream and simmer 3 more minutes. Adjust salt.",
             "Garnish with cilantro and serve hot with rice or naan."
-        ]
+        ],
+        owner: "695f44a2d47c7e796b8a4123"
     },
     {
         title: "Spicy Honey Lime Grilled Salmon",
@@ -231,7 +240,8 @@ const dummyRecipes = [
             "Add warm broth 1 cup at a time, stirring frequently until absorbed before adding more. Repeat for 18-20 minutes until rice is creamy and al dente.",
             "Remove from heat, stir in remaining butter and Parmesan. Let rest 2 minutes.",
             "Serve garnished with parsley and extra cheese."
-        ]
+        ],
+        owner: "695f44a2d47c7e796b8a4123"
     },
     {
         title: "Middle Eastern Shakshuka",
@@ -262,7 +272,8 @@ const dummyRecipes = [
             "Remove skillet from heat, add drained pasta and toss quickly.",
             "Pour egg-cheese mixture over pasta and toss vigorously, adding reserved pasta water a little at a time until creamy sauce forms.",
             "Serve immediately with extra cheese and black pepper on top."
-        ]
+        ],
+        owner: "695f44a2d47c7e796b8a4123"
     },
     {
         title: "Middle Eastern Shakshuka",
@@ -292,7 +303,8 @@ const dummyRecipes = [
             "Add all vegetables and stir-fry for 3-4 minutes until crisp-tender.",
             "Return chicken to the pan, pour in sauce, and toss everything together for 1-2 minutes.",
             "Serve hot over steamed rice."
-        ]
+        ],
+        owner: "695f44a2d47c7e796b8a4123"
     },
     {
         title: "Middle Eastern Shakshuka",
@@ -323,7 +335,8 @@ const dummyRecipes = [
             "Pour chocolate mixture over the peanut butter layer and spread evenly.",
             "Sprinkle with flaky sea salt if desired.",
             "Refrigerate for at least 2 hours until set, then cut into bars."
-        ]
+        ],
+        owner: "695f44a2d47c7e796b8a4123"
     },
 ];
 

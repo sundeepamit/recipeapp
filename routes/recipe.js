@@ -3,6 +3,8 @@ const router = express.Router()
 const Recipe = require('../models/recipe')
 const recipeSchemaValidation = require('../utils/recipe-validation')
 const ExpressError = require('../utils/ExpressError')
+const User = require('../models/user')
+
 router.get('/', (req, res) => {
     // console.log(req.session)
     // console.log(req.sessionID)
@@ -86,10 +88,4 @@ router.delete('/detail/:id', async (req, res) => {
     res.redirect('/recipe/show')
 })
 
-router.get('/login', (req, res) => {
-    res.render('recipes/login')
-})
-router.get('/register', (req, res) => {
-    res.render('recipes/register')
-})
 module.exports = router

@@ -2,7 +2,9 @@ const express = require('express')
 const path = require('node:path')
 const ejsMate = require('ejs-mate')
 const mongoose = require('mongoose')
-const router = require('./routes/recipe')
+const recipeRouter = require('./routes/recipe')
+const userRouter = require('./routes/user')
+
 const methodOverride = require('method-override')
 const session = require('express-session')
 const flash = require('connect-flash')
@@ -61,7 +63,8 @@ app.use((req, res, next) => {
 })
 
 // routes
-app.use('/recipe', router)
+app.use('/recipe', recipeRouter)
+app.use('/user', userRouter)
 
 app.get("/", (req, res) => {
     res.send('Working')

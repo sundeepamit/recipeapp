@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
-
+const passport = require('passport')
 
 router.get('/login', (req, res) => {
     res.render('recipes/login')
@@ -25,8 +25,9 @@ router.post('/register', async (req, res) => {
 
 })
 
-router.post('/login', async (req, res) => {
-    const { username, password } = req.body
-
+router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/user/login' }), async (req, res) => {
+    const { username } = req.body
+    req.flash('success', `Welcome back ${username}`)
+    res.redirect('/recipe/show')
 })
 module.exports = router

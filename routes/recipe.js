@@ -3,7 +3,7 @@ const router = express.Router()
 const Recipe = require('../models/recipe')
 const recipeSchemaValidation = require('../utils/recipe-validation')
 const ExpressError = require('../utils/ExpressError')
-const User = require('../models/user')
+const isLoggedIn = require('../utils/isloggedin')
 
 router.get('/', (req, res) => {
     // console.log(req.session)
@@ -29,7 +29,7 @@ router.get('/detail/:id', async (req, res) => {
     res.render('recipes/detail', { recipe })
 })
 
-router.get('/new', (req, res) => {
+router.get('/new', isLoggedIn, (req, res) => {
     res.render('recipes/new')
 })
 

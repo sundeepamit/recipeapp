@@ -6,8 +6,19 @@ const passport = require('passport')
 router.get('/login', (req, res) => {
     res.render('recipes/login')
 })
+
 router.get('/register', (req, res) => {
     res.render('recipes/register')
+})
+
+router.get('/logout', (req, res, next) => {
+    req.logOut((err) => {
+        if (err) {
+            return next(err)
+        }
+        res.redirect('/recipe')
+    }
+    )
 })
 
 router.post('/register', async (req, res) => {

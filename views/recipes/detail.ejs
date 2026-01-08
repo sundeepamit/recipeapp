@@ -72,7 +72,7 @@
         </div>
 
     </div>
-    <% if(loggedInUser &&loggedInUser.username===recipe.owner.username){ %>
+    <% if(loggedInUser &&recipe.owner._id.equals(loggedInUser._id)){ %>
         <div class="container mb-5 d-flex justify-content-end">
             <button class="btn  btn-primary-custom rounded-pill shadow px-3 py-2 me-4 text-white fs-5"
                 style="background-color: #40c057;"><a href="/recipe/edit/<%=recipe._id  %>"

@@ -68,16 +68,18 @@
         </div>
 
     </div>
-    <div class="container mb-5 d-flex justify-content-end">
-        <button class="btn  btn-primary-custom rounded-pill shadow px-3 py-2 me-4 text-white fs-5"
-            style="background-color: #40c057;"><a href="/recipe/edit/<%=recipe._id  %>"
-                class="text-decoration-none text-white">Edit
-                recipe</a></button>
-        <form action="/recipe/detail/<%=recipe._id %>?_method=DELETE" method="POST">
-            <button class="btn  btn-primary-custom rounded-pill shadow px-3 py-2 text-white fs-5"
-                style="background-color: #40c057;">Delete
-                this
-                recipe</button>
-        </form>
-    </div>
-    <%- include('../partials/footer') %>
+    <% if(loggedInUser){ %>
+        <div class="container mb-5 d-flex justify-content-end">
+            <button class="btn  btn-primary-custom rounded-pill shadow px-3 py-2 me-4 text-white fs-5"
+                style="background-color: #40c057;"><a href="/recipe/edit/<%=recipe._id  %>"
+                    class="text-decoration-none text-white">Edit
+                    recipe</a></button>
+            <form action="/recipe/detail/<%=recipe._id %>?_method=DELETE" method="POST">
+                <button class="btn  btn-primary-custom rounded-pill shadow px-3 py-2 text-white fs-5"
+                    style="background-color: #40c057;">Delete
+                    this
+                    recipe</button>
+            </form>
+        </div>
+        <% } %>
+            <%- include('../partials/footer') %>

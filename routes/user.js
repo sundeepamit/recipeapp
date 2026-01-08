@@ -16,19 +16,24 @@ router.get('/logout', (req, res, next) => {
         if (err) {
             return next(err)
         }
+        req.flash('success', 'Log you out')
         res.redirect('/recipe')
     }
     )
 })
 
-router.post('/register', async (req, res) => {
+router.post('/register', async (req, res, next) => {
     try {
         const { username, email, password } = req.body
         const user = new User({ username: username, email: email })
         const registerUser = await User.register(user, password)
         await user.save()
-        req.flash('success', `Successfully register ${username}`)
-        res.redirect('/recipe')
+        req.logIn(registerUser, (err) => {
+            if (err) { return next(err) }
+            req.flash('success', `Successfully register ${username}`)
+            res.redirect('/recipe')
+        })
+
     } catch (e) {
         req.flash('error', e.message)
         res.redirect('/user/register')

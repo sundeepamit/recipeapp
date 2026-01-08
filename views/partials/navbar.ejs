@@ -22,10 +22,13 @@
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
         <div class="ms-2 me-1">
-            <a class="text-decoration-none btn btn-outline-success" href="/user/login">Login</a>
-            <a class="text-decoration-none btn btn-outline-success " href="/user/register">Sign
-                Up</a>
-            <a class="text-decoration-none  btn btn-outline-success" href="/user/logout">Logout</a>
+            <% if(!loggedInUser){ %>
+                <a class="text-decoration-none btn btn-outline-success" href="/user/login">Login</a>
+                <a class="text-decoration-none btn btn-outline-success " href="/user/register">Sign
+                    Up</a>
+                <% } else{%>
+                    <a class="text-decoration-none  btn btn-outline-success" href="/user/logout">Logout</a>
+                    <% } %>
         </div>
 
     </div>

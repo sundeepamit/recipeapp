@@ -33,13 +33,13 @@ router.get('/new', isLoggedIn, (req, res) => {
     res.render('recipes/new')
 })
 
-router.get('/edit/:id', async (req, res) => {
+router.get('/edit/:id', isLoggedIn, async (req, res) => {
     const { id } = req.params
     const recipe = await Recipe.findById(id)
     res.render('recipes/edit', { recipe })
 })
 
-router.post('/new', async (req, res) => {
+router.post('/new', isLoggedIn, async (req, res) => {
     let { title, author, totalTime, image, description, ingredients, steps } = req.body
     if (ingredients) {
         ingredients = ingredients
@@ -65,7 +65,7 @@ router.post('/new', async (req, res) => {
 
 })
 
-router.put('/edit/:id', async (req, res) => {
+router.put('/edit/:id', isLoggedIn, async (req, res) => {
     // Bug :Not a best filter
     const { id } = req.params
     let { title, author, totalTime, image, description, ingredients, steps } = req.body
@@ -80,7 +80,7 @@ router.put('/edit/:id', async (req, res) => {
     res.redirect(`/recipe/detail/${id}`)
 })
 
-router.delete('/detail/:id', async (req, res) => {
+router.delete('/detail/:id', isLoggedIn, async (req, res) => {
     const { id } = req.params
     const recipeDeleted = await Recipe.findByIdAndDelete(id)
     console.log(recipeDeleted)

@@ -15,6 +15,7 @@ const LocalStrategy = require('passport-local')
 
 // security imports
 const mongoSanitize = require('express-mongo-sanitize');
+const helmet = require('helmet')
 
 // mongoose setup
 async function main() {
@@ -38,11 +39,13 @@ app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 app.use(methodOverride('_method'))
 app.use(session({
+
     secret: 'verysecure',
+    name: 'session',
     resave: true,                   // Don't save session if unmodified
     saveUninitialized: true,        // Don't create session until something is stored
     cookie: {                        // Optional: Configure the session cookie
-        secure: false,
+        // secure: true,
         path: '/',                // Set to true if using HTTPS
         httpOnly: true,                // Prevents client-side JS from accessing the cookie
         maxAge: 1000 * 60 * 60 * 24,    // Session expires in 1 day (in milliseconds)
@@ -82,6 +85,53 @@ app.use(
     mongoSanitize({
         replaceWith: '_',
     }),
+);
+
+
+
+
+const scriptSrcUrls = [
+    "https://stackpath.bootstrapcdn.com/",
+    "https://cdnjs.cloudflare.com/",      // Common for other libs if needed
+    "https://cdn.jsdelivr.net/",          // Bootstrap JS/CSS
+];
+const styleSrcUrls = [
+    "https://cdn.jsdelivr.net/",           // This fixes your current error — trailing / is required!
+    "https://fonts.googleapis.com/",
+    "https://stackpath.bootstrapcdn.com/",   // Keep if you have old links
+];
+const connectSrcUrls = [
+    "https://cdn.jsdelivr.net/",   // Allows source map fetches + any other connects
+    "https://stackpath.bootstrapcdn.com/",
+];
+const fontSrcUrls = [
+    "https://fonts.gstatic.com/",
+];
+
+
+
+app.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+            defaultSrc: ["'self'"],
+            // connectSrc: ["'self'", ...connectSrcUrls],
+            // scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+            scriptSrc: ["'self'", "'unsafe-inline'", ...scriptSrcUrls],
+            styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+            workerSrc: ["'self'", "blob:"],
+            childSrc: ["blob:"],
+            objectSrc: [],
+            imgSrc: [
+                "'self'",
+                "data:",
+                "blob:",
+                "https:",
+                // Add Cloudinary later: "https://res.cloudinary.com/yourcloudname/"
+            ],
+            fontSrc: ["'self'", ...fontSrcUrls],
+            connectSrc: ["'self'", ...connectSrcUrls],
+        },
+    })
 );
 
 // routes

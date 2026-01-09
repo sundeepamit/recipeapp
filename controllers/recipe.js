@@ -67,14 +67,20 @@ module.exports.createRecipe = async (req, res) => {
 }
 
 module.exports.updateRecipe = async (req, res) => {
-    // Bug :Not a best filter
     const { id } = req.params
     let { title, author, totalTime, image, description, ingredients, steps } = req.body
     if (ingredients) {
-        ingredients = ingredients.split(',').map(line => line.trim()).filter(line => line.length > 0)
+        ingredients = ingredients
+            .split('\n')                    // split by lines
+            .map(line => line.trim())       // remove useless spaces
+            .filter(line => line.length > 0); // remove empty lines
     }
+
     if (steps) {
-        steps = steps.split('.,').map(line => line.trim()).filter(line => line.length > 0);
+        steps = steps
+            .split('\n')
+            .map(line => line.trim())
+            .filter(line => line.length > 0);
     }
     const foundRecipe = await Recipe.findById(id)
     if (!foundRecipe.owner._id.equals(req.user._id)) {

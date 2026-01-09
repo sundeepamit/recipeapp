@@ -35,7 +35,9 @@
                                     e.g.
                                     400 g chicken breast
                                     2 tbsp olive oil
-                                    1 tsp paprika" rows="5" required><%= recipe.ingredients %></textarea>
+                                    1 tsp paprika" rows="5" required> <%for(let ing of recipe.ingredients) {%>
+                        <%=ing%>
+                        <%}  %></textarea>
 
             </div>
 
@@ -44,7 +46,9 @@
                 <textarea class="form-control" id="steps" aria-describedby="cooking steps" name="steps" placeholder="one step per line
                                 e.g.
                                 Cut chicken into bite size pieces
-                                Heat oil in pan" rows="6" required><%= recipe.steps %></textarea>
+                                Heat oil in pan" rows="6" required><%for(let step of recipe.steps) {%>
+                                    <%= step %>
+                                        <%} %></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             <button class="btn  btn-primary text-white ms-3" style="background-color: #40c057;border: #40c057;"><a

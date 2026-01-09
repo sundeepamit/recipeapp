@@ -12,6 +12,9 @@ const User = require('./models/user')
 
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
+
+// security imports
+const expressMongoSanitize = require('@exortek/express-mongo-sanitize');
 // mongoose setup
 async function main() {
     await mongoose.connect('mongodb://127.0.0.1:27017/recipeApp')
@@ -62,6 +65,9 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error')
     next()
 })
+
+// To remove data using these defaults:
+app.use(expressMongoSanitize());
 
 // routes
 app.use('/recipe', recipeRouter)

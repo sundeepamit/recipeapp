@@ -1,109 +1,22 @@
 const express = require('express')
 const router = express.Router()
-const Recipe = require('../models/recipe')
-const recipeSchemaValidation = require('../utils/recipe-validation')
-const ExpressError = require('../utils/ExpressError')
 const isLoggedIn = require('../utils/isloggedin')
+const { home, show, detail, newRecipe, edit, createRecipe, updateRecipe, deleteRecipe } = require('../controllers/recipe')
 
-router.get('/', (req, res) => {
-    // console.log(req.session)
-    // console.log(req.sessionID)
-    // req.session.isLogin = true
-    // console.log(req.session)
-    res.render('recipes/home')
-})
+router.get('/', home)
 
-router.get('/show', async (req, res) => {
-    const recipes = await Recipe.find({})
-    // console.log(recipe)
-    res.render('recipes/show', { recipes })
-})
+router.get('/show', show)
 
-router.get('/detail/:id', async (req, res) => {
-    const { id } = req.params
-    const recipe = await Recipe.findById(id).populate('owner')
-    // console.log(recipe)
-    if (!recipe) {
-        req.flash('error', 'Cannot find that recipe')
-        return res.redirect('/recipe/show')
-    }
-    res.render('recipes/detail', { recipe })
-})
+router.get('/detail/:id', detail)
 
-router.get('/new', isLoggedIn, (req, res) => {
-    res.render('recipes/new')
-})
+router.get('/new', isLoggedIn, newRecipe)
 
-router.get('/edit/:id', isLoggedIn, async (req, res) => {
-    const { id } = req.params
-    const foundRecipe = await Recipe.findById(id)
-    if (!foundRecipe.owner._id.equals(req.user._id)) {
-        req.flash('error', 'You do not have permission to edit this.')
-        return res.redirect('/recipe/show')
-    }
-    const recipe = await Recipe.findById(id)
-    res.render('recipes/edit', { recipe })
-})
+router.get('/edit/:id', isLoggedIn, edit)
 
-router.post('/new', isLoggedIn, async (req, res) => {
-    let { title, author, totalTime, image, description, ingredients, steps } = req.body
-    if (ingredients) {
-        ingredients = ingredients
-            .split('\n')                    // split by lines
-            .map(line => line.trim())       // remove useless spaces
-            .filter(line => line.length > 0); // remove empty lines
-    }
+router.post('/new', isLoggedIn, createRecipe)
 
-    if (steps) {
-        steps = steps
-            .split('\n')
-            .map(line => line.trim())
-            .filter(line => line.length > 0);
-    }
-    try {
-        await recipeSchemaValidation.validate({ title, author, totalTime, image, description, ingredients, steps })
-        const recipe = new Recipe({ title, author, totalTime, image, description, ingredients, steps })
-        recipe.owner = req.user._id
-        await recipe.save()
-        req.flash('success', 'successfully created recipe')
-        res.redirect(`/recipe/detail/${recipe._id}`)
-    } catch (error) {
-        new ExpressError(error, 404)
-    }
+router.put('/edit/:id', isLoggedIn, updateRecipe)
 
-})
-
-router.put('/edit/:id', isLoggedIn, async (req, res) => {
-    // Bug :Not a best filter
-    const { id } = req.params
-    let { title, author, totalTime, image, description, ingredients, steps } = req.body
-    if (ingredients) {
-        ingredients = ingredients.split(',').map(line => line.trim()).filter(line => line.length > 0)
-    }
-    if (steps) {
-        steps = steps.split('.,').map(line => line.trim()).filter(line => line.length > 0);
-    }
-    const foundRecipe = await Recipe.findById(id)
-    if (!foundRecipe.owner._id.equals(req.user._id)) {
-        req.flash('error', 'You do not have permission to edit this.')
-        return res.redirect('/recipe/show')
-    }
-    const updatedRecipe = await Recipe.findByIdAndUpdate(id, { title, author, totalTime, image, description, ingredients, steps })
-    req.flash('success', 'Update successfully')
-    res.redirect(`/recipe/detail/${id}`)
-})
-
-router.delete('/detail/:id', isLoggedIn, async (req, res) => {
-    const { id } = req.params
-    const foundRecipe = await Recipe.findById(id)
-    if (!foundRecipe.owner._id.equals(req.user._id)) {
-        req.flash('error', 'You do not have permission to edit this.')
-        return res.redirect('/recipe/show')
-    }
-    const recipeDeleted = await Recipe.findByIdAndDelete(id)
-    console.log(recipeDeleted)
-    req.flash('success', 'Successfully deleted recipe')
-    res.redirect('/recipe/show')
-})
+router.delete('/detail/:id', isLoggedIn, deleteRecipe)
 
 module.exports = router

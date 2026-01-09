@@ -68,7 +68,7 @@ app.use('/recipe', recipeRouter)
 app.use('/user', userRouter)
 
 app.get("/", (req, res) => {
-    res.send('Working')
+    res.redirect('/recipe')
 })
 
 // Catch-all for undefined routes (must be last!)

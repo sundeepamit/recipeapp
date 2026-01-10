@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
+
 const express = require('express')
 const path = require('node:path')
 const ejsMate = require('ejs-mate')
@@ -16,6 +20,9 @@ const LocalStrategy = require('passport-local')
 // security imports
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet')
+
+
+console.log(process.env.GREET)
 
 // mongoose setup
 async function main() {

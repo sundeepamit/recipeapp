@@ -25,7 +25,7 @@ const helmet = require('helmet')
 
 // mongoose setup
 async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/recipeApp')
+    await mongoose.connect(process.env.MONGODB_URL)
     console.log('Mongoose connected')
 }
 

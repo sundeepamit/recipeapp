@@ -22,7 +22,6 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet')
 
 
-console.log(process.env.GREET)
 
 // mongoose setup
 async function main() {
@@ -47,7 +46,7 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 app.use(methodOverride('_method'))
 app.use(session({
 
-    secret: 'verysecure',
+    secret: process.env.SESSIONSECRET,
     name: 'session',
     resave: true,                   // Don't save session if unmodified
     saveUninitialized: true,        // Don't create session until something is stored
